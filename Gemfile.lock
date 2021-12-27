@@ -1,0 +1,29 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    archive-zip (0.12.0)
+      io-like (~> 0.3.0)
+    childprocess (4.1.0)
+    chromedriver-helper (1.2.0)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
+    io-like (0.3.1)
+    nokogiri (1.12.5-x86_64-linux)
+      racc (~> 1.4)
+    racc (1.6.0)
+    rexml (3.2.5)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.1.0)
+      childprocess (>= 0.5, < 5.0)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  chromedriver-helper (~> 1.0)
+  selenium-webdriver
+
+BUNDLED WITH
+   2.2.32
