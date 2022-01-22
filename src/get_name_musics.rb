@@ -1,6 +1,8 @@
 require 'selenium-webdriver'
+require 'byebug'
 
-def get_name(driver, names)
+
+def get_name_album(driver, names)
     filter = String.new
     names.split.each do |name|
         filter += "%20#{name}"
@@ -9,12 +11,31 @@ def get_name(driver, names)
     driver.get("https://genius.com/search?q=#{filter}")
 end
 
-def main
-    Selenium::WebDriver::Chrome.driver_path = 'drivers/chromedriver/chromedriver'
-    driver = Selenium::WebDriver.for(:chrome)
-    name = 'Self Care'
+def get_name_album_for_artist(driver, artist)
+    driver.get "https://genius.com/"
+    driver.manage.timeouts.implicit_wait = 20
 
-    get_name(driver, name)
+    # Search the artist
+    driver.find_element(:tag_name, 'input').send_keys(artist).send_keys(:enter)
+
+    # driver.find_element(:tag_name, 'svg').click
+    # driver.find_elements(:tag_name, 'svg')[0].click
+
+    byebug
+
+end
+
+def main
+    # Selenium::WebDriver::Chrome.driver_path = 'drivers/chromedriver/chromedriver'
+    Selenium::WebDriver::Chrome::Service.driver_path = 'drivers/chromedriver/chromedriver'
+    driver = Selenium::WebDriver.for(:chrome)
+
+    # print "Enter the name of the album: "
+    # album = 'Swimming' #gets.to_s.chomp
+    print "Enter artist name: "
+    artist = 'Mac Miller' #gets.to_s.chomp
+
+    get_name_album_for_artist(driver, artist)
 end
 
 main
